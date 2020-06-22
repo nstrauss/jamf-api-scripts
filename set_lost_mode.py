@@ -118,13 +118,13 @@ def main():
     """Do the main thing here."""
     # Argument to file path. Required.
     parser = argparse.ArgumentParser(
-        description="Script to enable lost mode for a list of iPads."
+        description="Script to enable or disable lost mode for a list of mobile devices."
     )
     parser.add_argument(
-        "--csv", "-c", metavar="path_to_file", help="Path to input CSV",
+        "--csv", "-c", metavar="/path/to/file.csv", help="Path to input CSV",
     )
     parser.add_argument(
-        "--mode", "-m", metavar="path_to_file", help="Enable or disable lost mode",
+        "--mode", "-m", metavar="enable/disable", help="Enable or disable lost mode",
     )
     arg = parser.parse_args()
     csv_file = arg.csv
