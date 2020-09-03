@@ -118,7 +118,7 @@ def main():
     """Do the main thing here."""
     # Argument to file path. Required.
     parser = argparse.ArgumentParser(
-        description="Script to enable or disable lost mode for a list of mobile devices."
+        description="Script to enable or disable lost mode for a list of iPads."
     )
     parser.add_argument(
         "--csv", "-c", metavar="/path/to/file.csv", help="Path to input CSV",
@@ -172,13 +172,14 @@ def main():
         reader = csv.DictReader(csv_data)
         for row in reader:
             serial_number = row["serial_number"]
-            message = row["message"]
-            phone = row["phone_number"]
-            try:
-                sound = row["play_sound"]
-            except KeyError:
-                sound = None
-                pass
+            if mode == "enable":
+                message = row["message"]
+                phone = row["phone_number"]
+                try:
+                    sound = row["play_sound"]
+                except KeyError:
+                    sound = None
+                    pass
 
             # Send lost mode commands
             if mode == "enable":
